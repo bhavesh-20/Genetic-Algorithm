@@ -21,3 +21,32 @@ def random_generation():
     rand_string = ''.join(x for x in rand_string)
     return rand_string
 
+
+def fitness_function(rand_string :str) -> int:
+    rand_string = [rand_string[(x-1)*9:x*9] for x in range(1,10)]
+    return row_fitness(rand_string) + column_fitness(rand_string) + block_fitness(rand_string)
+    pass
+
+
+def row_fitness(rand_string):
+    s = 0
+    for i in rand_string:
+        s += len(set(i))
+    return s
+
+def column_fitness(rand_string):
+    columns = ['']*9
+    for i in rand_string:
+        for j in range(9):
+            columns[j] += i[j]
+    return row_fitness(columns)            
+
+def block_fitness(rand_string):
+    blocks = ['']*9
+    for row in range(9):
+        string = rand_string[row]
+        blocks[row//3 * 3] += string[:3]
+        blocks[row//3 * 3 + 1] += string[3:6]
+        blocks[row//3 * 3 + 2] += string[6:9]
+    return row_fitness(blocks)
+
