@@ -50,3 +50,12 @@ def block_fitness(rand_string):
         blocks[row//3 * 3 + 2] += string[6:9]
     return row_fitness(blocks)
 
+
+def crossover_1(string1 :str, string2 :str) -> list:
+    string1, string2 = string1[:40] + string2[40:], string2[:40] + string1[40:]
+    return [string1,string2]
+
+def crossover_2(string1 :list, string2 :list) -> list:
+    string1, string2 = string1[:4] + string2[4:], string2[:4] + string1[4:]
+
+
