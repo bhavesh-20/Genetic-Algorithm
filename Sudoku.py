@@ -5,6 +5,8 @@ from selection import selection
 from crossover import crossover
 from mutation import mutation
 
+
+"""A function to neatly print sudoku from genetic string at the end of the program"""
 def printSudoku(string: str):
     l = [string[(x-1)*9:x*9] for x in range(1,10)]
     for i in l:
@@ -12,9 +14,10 @@ def printSudoku(string: str):
             print(int(j),end=' ')
         print('')
 
+"""Function to execute genetic algorithm and it runs until solution is reached or 1000 iteration are completed."""
 def genetic_algorithm():
     gs = []
-    k=20
+    k=30
     for i in range(k):
         gs.append(random_generation())
     for _ in range(1000):

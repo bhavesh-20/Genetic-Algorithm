@@ -1,6 +1,10 @@
 import numpy as np
 from fitness import fitness_function
 
+"""First the fitness values are calculated for each genetic string passed in the list, and sorted 
+based on them in descending order, then the selection percentage is calculated and pairs are found
+based on the selection strategy randomly and returned to whom crossover is applied to."""
+
 def selection(gs: list,k: int):
     gs1 = []
     s = 0

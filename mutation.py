@@ -1,4 +1,8 @@
 import numpy as np
+
+"""Mutation is done in a smart way, a random row is selected and chance of not doing mutation is also taken
+into interest, this random row has been mutated in such a way that it minimises both row and column wise
+duplicates. """
 def mutation(string: str):
     l = ["x8xxxxx9x","xx75x28xx","6xx8x7xx5","37xx8xx51","2xxxxxxx8","95xx4xx32","8xx1x4xx9","xx19x36xx",
         "x4xxxxx2x"]

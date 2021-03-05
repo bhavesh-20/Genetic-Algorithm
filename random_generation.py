@@ -1,7 +1,9 @@
 import numpy as np
 
 """Function which generates random strings for genetic algorithm, each string
- is a representation of genetic string used in the algorithm."""
+ is a representation of genetic string used in the algorithm. Randomness is used in a smart way to remove
+ the chance of each row having duplicates in sudoku, hence the generated random string doesn't have any duplicates
+ row-wise"""
 
 def random_generation():
     l = ["x8xxxxx9x","xx75x28xx","6xx8x7xx5","37xx8xx51","2xxxxxxx8","95xx4xx32","8xx1x4xx9","xx19x36xx",
