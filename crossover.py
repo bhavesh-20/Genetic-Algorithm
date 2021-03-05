@@ -6,7 +6,8 @@ import numpy as np
 def crossover(string1 :str, string2 :str) -> list:
     string1 = [string1[(x-1)*9:x*9] for x in range(1,10)]
     string2 = [string2[(x-1)*9:x*9] for x in range(1,10)]
-    x = np.random.randint(1,8)
+    # x = np.random.randint(1,8)
+    x = 5
     string1, string2 = string1[:x] + string2[x:], string2[:x] + string1[x:]
     string1, string2 = ''.join(x for x in string1),  ''.join(x for x in string2)
     return [string1,string2]
