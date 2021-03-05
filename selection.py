@@ -8,9 +8,9 @@ def selection(gs: list,k: int):
         fitness = fitness_function(i)
         gs1.append([i,fitness])
         s += fitness
-    for i in gs1:
-        i[1] = round((i[1]*100)/s)
     gs1.sort(key = lambda x:-x[1])
+    for i in gs1:
+        i[1] = (i[1]*100)/s   
     g = [] 
     #since, k= 8
     for i in range(k//2):
