@@ -6,16 +6,28 @@ def mutation(string: str):
     x = np.random.randint(0,10)
     if x!=0:
         a = l[x-1]
-        n = np.array(list({1,2,3,4,5,6,7,8,9} - set([int(x) for x in a if x!='x'])))
-        np.random.shuffle(n)
-        n = list(n)
-        i = 0
+        n = list({1,2,3,4,5,6,7,8,9} - set([int(x) for x in a if x!='x']))
         s = ''
-        for j in a:
-            if j!='x':
-                s+=j
+        column = 0
+        for i in l[x-1]:
+            possible = set(n)
+            if i!='x':
+                s+=i
             else:
-                s+=str(n[i])
-                i+=1
-        string[x-1] = s 
+                for j in range(9):
+                    if j!=x and int(string[j][column]) in possible:
+                        possible.remove(int(string[j][column]))
+                possible = list(possible)
+                if len(possible) == 0:
+                    r = np.random.randint(0,len(n))
+                    r = n[r]
+                    s+=str(r)
+                    n.remove(r)
+                else:
+                    r = np.random.randint(0,len(possible))
+                    r = possible[r]
+                    s+=str(r)
+                    n.remove(r)
+            column+=1
+        string[x-1] = s
     return ''.join(x for x in string)    
