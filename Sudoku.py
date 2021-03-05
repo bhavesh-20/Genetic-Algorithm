@@ -5,6 +5,13 @@ from selection import selection
 from crossover import crossover
 from mutation import mutation
 
+def printSudoku(string: str):
+    l = [string[(x-1)*9:x*9] for x in range(1,10)]
+    for i in l:
+        for j in i:
+            print(int(j),end=' ')
+        print('')
+
 def genetic_algorithm():
     gs = []
     k=20
@@ -21,10 +28,14 @@ def genetic_algorithm():
         m = fitness_function(gs[0])
         s = gs[0]
         if m==243:
-            print(s)
+            print("Solution Found!!")
+            printSudoku(s)
             break
     else:
+        print("5 Best solution along with their fitnesses of the final population")
         for i in range(5):
-            print(gs[i],fitness_function(gs[i]))
+            printSudoku(gs[i])
+            print("Fitness Value: {}".format(fitness_function(gs[i])))
+            print('')
 
 genetic_algorithm()
