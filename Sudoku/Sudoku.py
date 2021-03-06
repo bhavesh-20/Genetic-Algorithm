@@ -31,12 +31,19 @@ def genetic_algorithm():
         m = fitness_function(gs[0])
         s = gs[0]
         if m==243:
-            print("Solution Found!!")
+            print("5 Best solution along with their fitnesses of the final population")
+            print("Sudoku 1: Solution Found!!")
             printSudoku(s)
+            print("Fitness Value: {}".format(fitness_function(gs[0])))
+            for j in range(1,5):
+                print("Sudoku {}:".format(j+1))
+                printSudoku(gs[i])
+                print("Fitness Value: {}".format(fitness_function(gs[i])))
             break
     else:
         print("5 Best solution along with their fitnesses of the final population")
         for i in range(5):
+            print("Sudoku {}:".format(i+1))
             printSudoku(gs[i])
             print("Fitness Value: {}".format(fitness_function(gs[i])))
             print('')
