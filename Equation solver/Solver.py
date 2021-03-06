@@ -11,17 +11,22 @@ def geneticAlgo():
     for i in range(k):
         strings.append(generatestring(ranges))
     m = 10000000000000000
+    state = strings[0]
     for _ in range(1000):
         strings = selection(strings,func)
         for i in range(0,k,2):
             strings[i],strings[i+1]  = crossover(strings[i],strings[i+1])
         for i in range(k):
-            strings[i] = mutation(strings[i])
+            strings[i] = mutation(strings[i],ranges)
         strings.sort(key = lambda x: getFitness(func,x))
-        m = min(m,getFitness(func,strings[0]))
+        x = getFitness(func,strings[0])
+        if x<m:
+            m=x
+            state = strings[0]
     
-    print("Global Minimum found: {}".format(m))
-    for i in range(5):
-        print(strings[i],getFitness(func,strings[i]))
+    x = int(state[:len(state)//2],2)
+    y = int(state[len(state)//2:],2)
+    print("Minimum of the function found: {} at x = {} and y = {}".format(m,x,y))
+    
 
 geneticAlgo()
